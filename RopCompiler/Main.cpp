@@ -120,14 +120,15 @@ int __cdecl main( /*IN*/ const int argc, /*IN*/ const CHAR* argv[])
 	{
 		printf( "[+] CSGO ProcessId: %u\n", ProcessId );
 	
-		struct RemoteProcessModuleInfo ClientDllInfo = {};
-		ZeroMemory(&ClientDllInfo, sizeof(struct RemoteProcessModuleInfo) );
+		struct  RemoteProcessModuleInfo ClientDllInfo = {};
+		ZeroMemory (& ClientDllInfo, sizeof ( struct  RemoteProcessModuleInfo ));
 
-		while ( GetRemoteProcessModuleInfo( ProcessId, L"client_panorama.dll", &ClientDllInfo ) == false &&
-			GetRemoteProcessModuleInfo( ProcessId, L"client.dll",          &ClientDllInfo ) == false    )
-			Sleep( 3000 );
-	
-		if ( (DWORD_PTR)ClientDllInfo.modBaseAddr != (DWORD_PTR)ClientDllInfo.hModule )
+		while ( GetRemoteProcessModuleInfo (ProcessId, L " client_panorama.dll " , & ClientDllInfo)! = true )
+		while ( GetRemoteProcessModuleInfo (ProcessId, L " client_panorama.dll " , & ClientDllInfo) == false &&
+			GetRemoteProcessModuleInfo (ProcessId, L " client.dll " e ClientDllInfo) == false     )
+			Sono ( 3000 );
+
+		if ((DWORD_PTR) ClientDllInfo. modBaseAddr ! = (DWORD_PTR) ClientDllInfo. hModule )
 		{
 			printf("ERROR: ClientDllInfo seems to be corrupted!\n");
 			system("pause");
